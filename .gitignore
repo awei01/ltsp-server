@@ -1,0 +1,8 @@
+# Environment configs
+env
+
+# Temp build folder
+.build
+
+# System files
+.DS_Store
