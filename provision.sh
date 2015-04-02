@@ -8,11 +8,10 @@ cat <<END
 |------------------------------------
 END
 
-# Install SSH Server
-REQUIRE_PKG "openssh-server"
-
 # Install LTSP Server
 REQUIRE_PKG "ltsp-server"
+
+## Uninstall tfptd-hpa ?
 
 # Install dnsmasq
 REQUIRE_PKG "dnsmasq"
@@ -24,12 +23,19 @@ if ! FILE_EXISTS $CONFIG; then
 	sudo ltsp-config dnsmasq
 fi
 
-# Modify dnsmasq configuration if needed and restart
-if grep -q -e "^\(enable-tftp\|port=0\)\{1\}" $CONFIG; then
-	echo "Configuring dnsmasq..."
-	sed -i -r "s/^(enable-tftp|port=0)$/# \1/" $CONFIG
-	echo "Restarting dnsmasq..."
-	sudo service dnsmasq restart
+## Modify dnsmasq configuration if needed and restart ?
+#if grep -q -e "^\(enable-tftp\|port=0\)\{1\}" $CONFIG; then
+#	echo "Configuring dnsmasq..."
+#	sed -i -r "s/^(enable-tftp|port=0)$/# \1/" $CONFIG
+#	echo "Restarting dnsmasq..."
+#	sudo service dnsmasq restart
+#fi
+
+# Copy over the default ltsp-build-client.conf
+CONFIG="/etc/ltsp/ltsp-build-client.conf"
+if ! FILE_EXISTS $CONFIG; then
+	echo "Copying default ltsp-build-client.conf"
+	cp "$DIR/configs/ltsp/ltsp-build-client.conf" $CONFIG
 fi
 
 cat <<END

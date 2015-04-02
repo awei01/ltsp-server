@@ -9,7 +9,7 @@ END
 # Loop through all the folders in
 CONFS="/opt/ltsp/i386/boot/pxelinux.cfg"
 if [ ! -d $CONFS ]; then
-	echo "Cannot locate client boot files in [$CONFS]"
+	echo "Directory does not exist [$CONFS]"
 	return 1
 fi
 
