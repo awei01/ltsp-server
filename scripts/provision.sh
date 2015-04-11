@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 __pwd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source "$__pwd/includes/global-functions.shinc"
+source "$__pwd/../includes/include.shinc"
 
 cat <<END
 |------------------------------------
