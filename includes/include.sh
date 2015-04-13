@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-if [ -z "$__GLOBAL_FUNCTIONS_INCLUDED" ]; then
-
+if [ -n "$__GLOBAL_FUNCTIONS_INCLUDED" ]; then
+	return 0
 fi
+readonly __GLOBAL_FUNCTIONS_INCLUDED=1
 
 function PARAM_VALID {
 	local param="$1"
